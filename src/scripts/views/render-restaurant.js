@@ -28,24 +28,6 @@ const truncateWords = (text, limit) => {
   }
 };
 
-const fetchAndCache = async (url, cacheName) => {
-  try {
-    const cache = await caches.open(cacheName);
-    const cachedResponse = await cache.match(url);
-
-    if (cachedResponse) {
-      return;
-    }
-
-    const response = await fetch(url);
-    if (response.ok) {
-      await cache.put(url, response.clone());
-    }
-  } catch (error) {
-    console.error(`Error fetching and caching ${url}: ${error}`);
-  }
-};
-
 const renderRestaurant = async (filterFavorite) => {
   const prepData = await getRestaurantData();
   const favoritesData = await getAllItems();
@@ -84,9 +66,6 @@ const renderRestaurant = async (filterFavorite) => {
                   </div>
                 </article>
             `;
-      const apiDetail = `https://restaurant-api.dicoding.dev/detail/${id}`;
-      const cacheDetail = 'yummyapp-api-detail';
-      await fetchAndCache(apiDetail, cacheDetail);
     });
     const likeClass = document.querySelectorAll('.like');
     await actButton(likeClass);
