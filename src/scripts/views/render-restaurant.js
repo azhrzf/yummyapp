@@ -59,11 +59,6 @@ const renderRestaurant = async (filterFavorite) => {
     dataRestaurants.map(async (restaurant) => {
       const {id, name, description, pictureId, city, rating} = restaurant;
       const pictureUrl = 'https://restaurant-api.dicoding.dev/images/medium/';
-
-      const apiDetail = `https://restaurant-api.dicoding.dev/detail/${id}`;
-      const cacheDetail = 'yummyapp-api-detail';
-      await fetchAndCache(apiDetail, cacheDetail);
-
       dataShow.innerHTML += `
             <article tabindex=0>
                 <img src=${pictureUrl}${pictureId} alt=restaurant ${id}_${name}>
@@ -89,6 +84,9 @@ const renderRestaurant = async (filterFavorite) => {
                   </div>
                 </article>
             `;
+      const apiDetail = `https://restaurant-api.dicoding.dev/detail/${id}`;
+      const cacheDetail = 'yummyapp-api-detail';
+      await fetchAndCache(apiDetail, cacheDetail);
     });
     const likeClass = document.querySelectorAll('.like');
     await actButton(likeClass);
