@@ -1,0 +1,145 @@
+.data--show {
+    padding: 10px 40px;
+}
+
+.data--show * {
+    background-color: var(--background-color-2);
+}
+
+.no-bg {
+    background-color: var(--background-color);
+    padding: 120px 0;
+}
+
+.data--show>article {
+    border-radius: 2%;
+    margin-bottom: 20px;
+}
+
+.data--show>article>:not(img) {
+    padding: 20px;
+    border-radius: 2%;
+}
+
+.data--show>article>img {
+    width: 100%;
+    height: 300px;
+    border-radius: 2% 2% 0 0;
+    object-fit: cover;
+}
+
+.data--show--desc * {
+    margin: 0;
+}
+
+.data--show--desc-in {
+    display: block;
+}
+
+.data--show--desc-in * {
+    margin-top: 10px;
+}
+
+.data--show--desc>.title {
+    font-size: xx-large;
+    margin: 20px 0;
+    background-color: transparent;
+}
+
+.data--show--desc>.title>a {
+    padding: 15px 0;
+    background-color: transparent;
+}
+
+.menu,
+.menu h2 {
+    margin-top: 10px;
+}
+
+.menu {
+    margin-top: 2rem;
+}
+
+.menu h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-bottom: 0.5rem;
+}
+
+.reviews {
+    margin-top: 2rem;
+}
+
+.reviews h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.reviews ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.reviews li {
+    margin-bottom: 1rem;
+}
+
+.review__name {
+    font-weight: bold;
+}
+
+.review__date {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.review__text {
+    margin: 0;
+}
+
+.like {
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    border-radius: 50%;
+    border: 0;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+
+.like, .like * {
+    background-color: #988d8d;
+}
+
+@media screen and (min-width: 768px) {
+    .data--show {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-bottom: 0;
+    }
+
+    .data--show--desc-in {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .data--show {
+        padding: 10px 100px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
