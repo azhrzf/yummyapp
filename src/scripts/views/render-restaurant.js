@@ -52,10 +52,9 @@ const renderRestaurant = async (filterFavorite) => {
   if (prepData && dataRestaurants.length > 0) {
     dataShow.innerHTML = '';
     dataShow.style.display = 'grid';
-    dataRestaurants.map(async (restaurant) => {
+    dataRestaurants.forEach(async (restaurant) => {
       const {id, name, description, pictureId, city, rating} = restaurant;
       const pictureUrl = 'https://restaurant-api.dicoding.dev/images/medium/';
-      await getDetailRestaurantData(id);
       dataShow.innerHTML += `
             <article tabindex=0>
                 <img src=${pictureUrl}${pictureId} alt=restaurant ${id}_${name}>
@@ -85,6 +84,9 @@ const renderRestaurant = async (filterFavorite) => {
     const likeClass = document.querySelectorAll('.like');
     await actButton(likeClass);
     await addEvent(likeClass);
+    dataRestaurants.forEach(async (restaurant) => {
+      await getDetailRestaurantData(restaurant.id);
+    });
   } else if (prepData && dataRestaurants.length === 0) {
     dataShow.innerHTML = `
         <h3 class="text__important no-bg">Belum ada restaurant</h3>
