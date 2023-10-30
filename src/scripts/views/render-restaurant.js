@@ -28,6 +28,20 @@ const truncateWords = (text, limit) => {
   }
 };
 
+const getDetailRestaurantData = async (id) => {
+  try {
+    const cache = await caches.open('yummyapp-api-detail');
+    const cachedResponse = await cache.match(`https://restaurant-api.dicoding.dev/detail/${id}`);
+    if (!cachedResponse) {
+      const response = await fetch(`https://restaurant-api.dicoding.dev/detail/${id}`);
+      const responseJson = await response.json();
+      await cache.put(`https://restaurant-api.dicoding.dev/detail/${id}`, new Response(JSON.stringify(responseJson)));
+    }
+  } catch (error) {
+    console.log('Error fetching restaurant data', error);
+  }
+};
+
 const renderRestaurant = async (filterFavorite) => {
   const prepData = await getRestaurantData();
   const favoritesData = await getAllItems();
@@ -41,6 +55,7 @@ const renderRestaurant = async (filterFavorite) => {
     dataRestaurants.map(async (restaurant) => {
       const {id, name, description, pictureId, city, rating} = restaurant;
       const pictureUrl = 'https://restaurant-api.dicoding.dev/images/medium/';
+      await getDetailRestaurantData(id);
       dataShow.innerHTML += `
             <article tabindex=0>
                 <img src=${pictureUrl}${pictureId} alt=restaurant ${id}_${name}>
