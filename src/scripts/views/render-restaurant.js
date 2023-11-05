@@ -49,12 +49,12 @@ const renderRestaurant = async (filterFavorite) => {
     });
   } else if (prepData && dataRestaurants.length === 0) {
     dataShow.innerHTML = `
-        <h3 class="text__important no-bg">
+        <h3 class=".restaurants__not__found text__important no-bg">
           Belum ada restaurant
         </h3>`;
   } else {
     dataShow.innerHTML = `
-        <h3 class="text__important no-bg">
+        <h3 class="fail__importing__data text__important no-bg">
           Gagal memuat data
         </h3>`;
   }

@@ -27,7 +27,7 @@ const renderDetail = async (id) => {
     await innerDetail(dataShow, data.restaurant);
   } else {
     dataShow.innerHTML = `
-        <h3 class="text__important no-bg">
+        <h3 class="fail__importing__data text__important no-bg">
           Gagal memuat data
         </h3>`;
   }

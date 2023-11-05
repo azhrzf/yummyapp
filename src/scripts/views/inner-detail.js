@@ -28,6 +28,7 @@ const innerDetail = async (mainElement, data) => {
 
   const article = document.createElement('article');
   article.setAttribute('tabindex', '0');
+  article.classList.add('item--detail');
 
   const img = document.createElement('img');
   img.setAttribute('src', `${pictureUrl}${pictureId}`);
