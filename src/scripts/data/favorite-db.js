@@ -18,6 +18,13 @@ const addItem = async (key, value) => {
   await tx.done;
 };
 
+const putItem = async (key, value) => {
+  const db = await dbPromise;
+  const tx = db.transaction(storeName, 'readwrite');
+  tx.store.put(value, key);
+  await tx.done;
+};
+
 // Get an item from the object store
 const getItem = async (key) => {
   const db = await dbPromise;
@@ -42,4 +49,4 @@ const deleteItem = async (key) => {
   await tx.done;
 };
 
-export {addItem, getItem, getAllItems, deleteItem};
+export {addItem, putItem, getItem, getAllItems, deleteItem};

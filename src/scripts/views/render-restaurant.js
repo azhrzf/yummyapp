@@ -1,5 +1,5 @@
-import {addEvent, actButton} from '../data/like-button';
 import {getAllItems} from '../data/favorite-db';
+import {innerRestaurant} from './inner-restaurant';
 const dataShow = document.querySelector('.data--show');
 
 const getRestaurantData = async () => {
@@ -18,13 +18,6 @@ const getRestaurantData = async () => {
   } catch (error) {
     console.log('Error fetching restaurant data', error);
     return [];
-  }
-};
-
-const truncateWords = (text, limit) => {
-  if (text.split(' ').length > limit) {
-    const newText = text.split(' ').splice(0, limit).join(' ');
-    return `${newText} ...`;
   }
 };
 
@@ -50,51 +43,20 @@ const renderRestaurant = async (filterFavorite) => {
   });
   const dataRestaurants = filterFavorite ? filteredData : prepData.restaurants;
   if (prepData && dataRestaurants.length > 0) {
-    dataShow.innerHTML = '';
-    dataShow.style.display = 'grid';
-    dataRestaurants.forEach(async (restaurant) => {
-      const {id, name, description, pictureId, city, rating} = restaurant;
-      const pictureUrl = 'https://restaurant-api.dicoding.dev/images/medium/';
-      dataShow.innerHTML += `
-            <article tabindex=0>
-                <img src=${pictureUrl}${pictureId} alt=restaurant ${id}_${name}>
-                <div class="data--show--desc">
-                    <div class="data--show--desc-in">
-                      <h4>Kota ${city}</h4>
-                      <p>Rating: ${rating}</p>
-                      <button aria-label="like this movie"
-                      id="${id}" class="like">
-
-                    </button>              
-                    </div>
-                    <h3 class="title">
-                      <a
-                        class="text__anchor"
-                        href="/#/detail/${id}">
-                          ${name}
-                      </a>
-                    </h3>
-                    <p id=${id}_desc class="toggle_desc">
-                        ${truncateWords(description, 50)}
-                    </p>
-                  </div>
-                </article>
-            `;
-    });
-    const likeClass = document.querySelectorAll('.like');
-    await actButton(likeClass);
-    await addEvent(likeClass);
+    await innerRestaurant(dataShow, dataRestaurants);
     dataRestaurants.forEach(async (restaurant) => {
       await getDetailRestaurantData(restaurant.id);
     });
   } else if (prepData && dataRestaurants.length === 0) {
     dataShow.innerHTML = `
-        <h3 class="text__important no-bg">Belum ada restaurant</h3>
-        `;
+        <h3 class="text__important no-bg">
+          Belum ada restaurant
+        </h3>`;
   } else {
     dataShow.innerHTML = `
-        <h3 class="text__important no-bg">Gagal memuat data</h3>
-        `;
+        <h3 class="text__important no-bg">
+          Gagal memuat data
+        </h3>`;
   }
 };
 
