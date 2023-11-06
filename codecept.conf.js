@@ -13,7 +13,7 @@ exports.config = {
   helpers: {
     Playwright: {
       browser: 'chromium',
-      url: 'https://quiet-daifuku-a535e6.netlify.app/',
+      url: 'https://quiet-daifuku-a535e6.netlify.app',
       show: true,
     },
   },
