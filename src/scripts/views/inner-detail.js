@@ -14,7 +14,7 @@ const innerDetail = async (mainElement, data) => {
     customerReviews,
   } = data;
 
-  const pictureUrl = 'https://restaurant-api.dicoding.dev/images/medium/';
+  const pictureUrl = 'https://restaurant-api.dicoding.dev/images/small/';
 
   const categoriesString = categories.map((category) => {
     return category.name;

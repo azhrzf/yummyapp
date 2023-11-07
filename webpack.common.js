@@ -103,7 +103,7 @@ module.exports = {
           },
         },
         {
-          urlPattern: ({url}) => url.href.startsWith('https://restaurant-api.dicoding.dev/images/medium/'),
+          urlPattern: ({url}) => url.href.startsWith('https://restaurant-api.dicoding.dev/images/small/'),
           handler: 'StaleWhileRevalidate',
           options: {
             cacheName: 'yummyapp-image-api',

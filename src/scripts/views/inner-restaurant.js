@@ -12,7 +12,7 @@ const innerRestaurant = async (mainElement, dataRestaurants) => {
   mainElement.style.display = 'grid';
   dataRestaurants.forEach(async (restaurant) => {
     const {id, name, description, pictureId, city, rating} = restaurant;
-    const pictureUrl = 'https://restaurant-api.dicoding.dev/images/medium/';
+    const pictureUrl = 'https://restaurant-api.dicoding.dev/images/small/';
 
     const article = document.createElement('article');
     article.setAttribute('tabindex', '0');
