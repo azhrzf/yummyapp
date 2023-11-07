@@ -31,8 +31,9 @@ const innerDetail = async (mainElement, data) => {
   article.classList.add('item--inner--detail');
 
   const img = document.createElement('img');
-  img.setAttribute('src', `${pictureUrl}${pictureId}`);
+  img.setAttribute('data-src', `${pictureUrl}${pictureId}`);
   img.setAttribute('alt', `restaurant ${id}_${name}`);
+  img.classList.add('lazyload');
   article.appendChild(img);
 
   const dataShowDesc = document.createElement('div');
