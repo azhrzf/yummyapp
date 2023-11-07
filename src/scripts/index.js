@@ -19,6 +19,8 @@ const setJumbotron = async () => {
   imgElement.setAttribute('src', heroes);
   imgElement.setAttribute('data-src', heroes);
   imgElement.setAttribute('alt', 'hero image');
+  imgElement.setAttribute('height', '450');
+  imgElement.setAttribute('width', '675');
   imgElement.classList.add('lazyload');
 
   pictureElement.appendChild(sourceElement);
