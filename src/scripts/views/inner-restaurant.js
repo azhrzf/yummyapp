@@ -48,7 +48,7 @@ const innerRestaurant = async (mainElement, dataRestaurants) => {
     dataShowDesc.appendChild(h3);
 
     const a = document.createElement('a');
-    a.setAttribute('href', `/#/detail/${id}`);
+    a.setAttribute('href', `#/detail/${id}`);
     a.classList.add('text__anchor');
     a.textContent = name;
     h3.appendChild(a);
