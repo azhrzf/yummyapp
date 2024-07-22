@@ -15,4 +15,4 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           local-dir: ./dist/
-          server-dir: yummy-app/
+          server-dir: portfolio.azharfauzi.my.id/yummy-app/
